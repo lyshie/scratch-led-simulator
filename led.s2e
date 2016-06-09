@@ -1,0 +1,53 @@
+{
+   "blockSpecs" : [
+      [
+         " ",
+         "set led ( %n , %n ) on",
+         "set_led_on",
+         0,
+         0
+      ],
+      [
+         " ",
+         "set led ( %n , %n ) off",
+         "set_led_off",
+         0,
+         0
+      ],
+      [
+         " ",
+         "locate led ( %n , %n )",
+         "locate_led",
+         0,
+         0
+      ],
+      [
+         "r",
+         "get location x",
+         "get_location_x"
+      ],
+      [
+         "r",
+         "get location y",
+         "get_location_y"
+      ],
+      [
+         "r",
+         "get led status",
+         "get_led_status"
+      ],
+      [
+         "r",
+         "status",
+         "status"
+      ],
+      [
+         " ",
+         "flush",
+         "flush"
+      ]
+   ],
+   "extensionPort" : 12345,
+   "extensionName" : "Simple 8x8 LED Matrix Extension",
+   "menus" : {}
+}

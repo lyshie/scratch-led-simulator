@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+
+<body>
+    <div class="container-fluid">
+        <canvas id="bg" width="400" height="400" style="display:none;"></canvas>
+        <canvas id="fg" width="400" height="400"></canvas>
+    </div>
+
+    <script src="jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        jQuery.noConflict();
+        (function($) {
+            $(function() {
+
+                function drawLED(leds) {
+                    var fg = document.getElementById("fg");
+                    var ctx_fg = fg.getContext("2d");
+
+                    // double buffer
+                    var bg = document.getElementById("bg");
+                    var ctx = bg.getContext("2d");
+
+                    for (var x = 0; x < leds.length; x++) {
+                        for (var y = 0; y < leds[x].length; y++) {
+
+                            ctx.beginPath();
+
+                            if (leds[x][y] == 1) {
+                                ctx.fillStyle = "#ff0000";
+                            }
+                            else {
+                                ctx.fillStyle = "#cccccc";
+                            }
+
+                            ctx.arc(20 + x * 40, 20 + y * 40, 19, 0, 2 * Math.PI);
+                            ctx.fill();
+                        }
+                    }
+
+                    ctx_fg.drawImage(bg, 0, 0);
+                }
+
+                function refresh() {
+                    $.get("http://127.0.0.1:12345/poll", function(data) {
+                        var lines = data.split('\n');
+                        for (var i = 0; i < lines.length; i++) {
+                            if (lines[i].startsWith('status ')) {
+                                var x = eval('var status = ' + lines[i].substring(7) + ';');
+                                drawLED(status);
+                                break;
+                            }
+                        }
+                    });
+                }
+
+                setInterval(refresh, 10);
+            });
+        })(jQuery);
+    </script>
+</body>
+
+</html>
