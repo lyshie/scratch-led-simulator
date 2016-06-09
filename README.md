@@ -16,3 +16,9 @@ Scratch2 LED Simulator
 * Import `led.s2e` extension, create your Scratch2 project (sample project `led.sb2`).
 ![imp_ext.jpg](screenshots/imp_ext.jpg)
 ![blocks.jpg](screenshots/blocks.jpg)
+
+
+### 4. Reference
+- [Scratch Extension](https://wiki.scratch.mit.edu/wiki/Scratch_Extension)
+- [Creating Scratch 2.0 Extensions](https://wiki.scratch.mit.edu/w/images/ExtensionsDoc.HTTP-9-11.pdf)
+- [Double buffering with HTML 5 Canvas](http://blog.bob.sh/2012/12/double-buffering-with-html-5-canvas.html)
